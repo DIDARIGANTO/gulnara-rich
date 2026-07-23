@@ -123,6 +123,18 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
   margin-inline: auto;
 }
 
+/* Параллакс-слои: JS пишет --px/--py, CSS компонует с базовым транcформом */
+[data-depth] {
+  transform: translate3d(var(--px, 0px), var(--py, 0px), 0);
+  will-change: transform;
+}
+.bg-letter[data-depth] {
+  transform: translate(-50%, -50%) translate3d(var(--px, 0px), var(--py, 0px), 0);
+}
+.hero-glow[data-depth] {
+  transform: translateY(-50%) translate3d(var(--px, 0px), var(--py, 0px), 0);
+}
+
 /* Огромная буква-подложка */
 .bg-letter {
   position: absolute;
