@@ -457,16 +457,34 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
   margin: 0 auto;
 }
 .fl-card {
+  margin: 0;
   border-radius: 18px;
   overflow: hidden;
   box-shadow: 0 20px 44px rgba(43, 37, 35, .14);
-  transition: transform .5s var(--ease), box-shadow .5s var(--ease);
+  transition: transform .5s var(--ease), box-shadow .5s var(--ease),
+              opacity .9s var(--ease);
+  transform: rotate(var(--rot, 0deg));
 }
+.fl-card.reveal { transform: rotate(var(--rot, 0deg)) translateY(30px) scale(.985); }
+.fl-card.reveal.in-view { transform: rotate(var(--rot, 0deg)); }
 .fl-card:hover {
-  transform: translateY(-6px) scale(1.02) rotate(0deg) !important;
+  transform: rotate(0deg) translateY(-6px) scale(1.02) !important;
   box-shadow: 0 30px 60px rgba(185, 138, 62, .3);
+  z-index: 2;
 }
 .fl-card img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Ритм сетки: 2 ряда по 3 кадра с разными пропорциями */
+.fl-card:nth-child(1) { grid-column: span 4; aspect-ratio: 4 / 5; }
+.fl-card:nth-child(2) { grid-column: span 5; aspect-ratio: 4 / 4.6; margin-top: 34px; }
+.fl-card:nth-child(3) { grid-column: span 3; aspect-ratio: 3 / 4.4; }
+.fl-card:nth-child(4) { grid-column: span 5; aspect-ratio: 5 / 5.6; }
+.fl-card:nth-child(5) { grid-column: span 3; aspect-ratio: 3 / 4.2; margin-top: 30px; }
+.fl-card:nth-child(6) { grid-column: span 4; aspect-ratio: 4 / 4.8; }
+
+@media (max-width: 900px) {
+  .fl-card:nth-child(n) { grid-column: span 6; margin-top: 0; aspect-ratio: 4 / 5; }
+}
 
 /* ═══ Акт 5 · Философия ═══ */
 .phil-grid {
