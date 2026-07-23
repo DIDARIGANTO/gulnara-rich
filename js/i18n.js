@@ -67,7 +67,7 @@ const I18N = {
     "press.p7": "Награды и дипломы",
     "press.p8": "Выступления и форумы",
     /* Финал */
-    "follow.kicker": "Продолжение",
+    "follow.kicker": "Будь рядом",
     "follow.title": "Продолжение — в Instagram",
     "follow.text": "Философия self-made женщины, закулисье Rich Flowers и живой опыт — каждый день.",
     "follow.scan": "наведите камеру на QR",
