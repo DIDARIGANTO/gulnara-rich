@@ -302,8 +302,8 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
   line-height: 1.35;
   color: var(--ink-soft);
 }
-/* привязка к портрету: right = отступ портрета + доля его ширины, одинаково на всех экранах */
-.hero-badge--1 { right: calc(clamp(0px, 3vw, 60px) + min(88svh, 900px) * 0.54); top: 31%; }
+/* привязан к правому краю, как портрет и Bloom — держится одинаково на всех экранах */
+.hero-badge--1 { right: 4%; top: 31%; }
 .hero-badge--2 { right: 5%; top: 12%; }
 .hero-badge--3 { right: 44%; top: 52%; }
 .hero-badge--4 { right: 36%; top: 70%; }
