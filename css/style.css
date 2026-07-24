@@ -917,15 +917,16 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
     max-height: 54svh;
     order: 1;
   }
-  .hero-titles { order: 2; text-align: center; padding-bottom: 210px; grid-column: auto; grid-row: auto; }
+  .hero-titles { order: 2; text-align: center; padding-bottom: 135px; grid-column: auto; grid-row: auto; }
   .hero-tag { margin-inline: auto; }
   .hero-social {
     right: 50%;
     transform: translateX(50%);
-    bottom: 64px;
+    bottom: 28px;
     white-space: nowrap;
   }
-  .act--manifesto { margin-bottom: -27vh; } /* текст короче — хвост длиннее, подтягиваем сильнее */
+  .act--manifesto { margin-bottom: -46vh; } /* текст короче + поднят — хвост длиннее, подтягиваем сильнее */
+  .sticky-view { justify-content: flex-start; padding-top: 16vh; } /* поднимаем текст манифеста ближе к плашке */
   .hero-badge { max-width: 148px; padding: 8px 11px; }
   .hero-badge b { font-size: .74rem; }
   .hero-badge span { font-size: .64rem; }
