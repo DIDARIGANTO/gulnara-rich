@@ -435,14 +435,6 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
 .tl-photo img { width: 100%; height: 100%; object-fit: cover; }
 
 .tl-text h3 { font-size: clamp(1.7rem, 2.6vw, 2.4rem); margin-bottom: 12px; }
-.tl-text h3::before {
-  content: counter(tl, decimal-leading-zero);
-  display: block;
-  font-size: .9rem;
-  letter-spacing: .3em;
-  color: var(--gold);
-  margin-bottom: 8px;
-}
 .timeline { counter-reset: tl; }
 .tl-item { counter-increment: tl; }
 .tl-text p { color: var(--ink-soft); max-width: 44ch; }
