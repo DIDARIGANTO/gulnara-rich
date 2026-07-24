@@ -87,7 +87,7 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
 /* ─── Общее для актов ─── */
 .act {
   position: relative;
-  padding: clamp(96px, 13vh, 170px) clamp(20px, 5vw, 64px);
+  padding: clamp(80px, 10vh, 130px) clamp(20px, 5vw, 64px);
   overflow: clip;
 }
 
@@ -349,8 +349,8 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
 
 
 /* ═══ Акт 2 · Манифест ═══ */
-.act--manifesto { padding: 0; }
-.sticky-wrap { height: 240vh; }
+.act--manifesto { padding: 0; margin-bottom: -19vh; } /* убираем пустой «хвост» залипающего блока */
+.sticky-wrap { height: 220vh; }
 .sticky-view {
   position: sticky;
   top: 0;
@@ -925,6 +925,7 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
     bottom: 64px;
     white-space: nowrap;
   }
+  .act--manifesto { margin-bottom: -27vh; } /* текст короче — хвост длиннее, подтягиваем сильнее */
   .hero-badge { max-width: 148px; padding: 8px 11px; }
   .hero-badge b { font-size: .74rem; }
   .hero-badge span { font-size: .64rem; }
