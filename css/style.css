@@ -223,6 +223,10 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
   z-index: 0;
 }
 
+.hero-scene > picture { display: contents; } /* картинка absolute, обёртка вне грида */
+.hero-scene picture source { display: none; }
+.hero-titles { grid-column: 1; grid-row: 1; }
+
 .hero-portrait {
   position: absolute;
   right: clamp(0px, 3vw, 60px);
@@ -812,7 +816,7 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
     max-height: 54svh;
     order: 1;
   }
-  .hero-titles { order: 2; text-align: center; padding-bottom: 210px; }
+  .hero-titles { order: 2; text-align: center; padding-bottom: 210px; grid-column: auto; grid-row: auto; }
   .hero-tag { margin-inline: auto; }
   .hero-social {
     right: 50%;
