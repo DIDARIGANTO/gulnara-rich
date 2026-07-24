@@ -760,14 +760,6 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
   transform-origin: left;
   border-radius: 4px 0 0 4px;
 }
-.book-pages {
-  position: absolute;
-  right: 0; top: 6px; bottom: 6px;
-  width: 34px;
-  background: repeating-linear-gradient(90deg, #E9D9A8 0 2px, #D8B36A 2px 3px);
-  transform: rotateY(90deg) translateZ(calc(min(300px, 62vw) - 18px));
-  transform-origin: right;
-}
 
 .book-info .kicker { margin-bottom: 8px; }
 .book-role {
