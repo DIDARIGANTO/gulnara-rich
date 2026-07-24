@@ -207,6 +207,10 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
 }
 
 .hero-scene {
+  /* геометрия портрета: отступ справа, высота, ширина (пропорция файла 1024×1536) */
+  --ro: clamp(0px, 3vw, 60px);
+  --ph: min(88svh, 900px);
+  --pw: calc(var(--ph) * 0.667);
   position: relative;
   flex: 1;
   min-height: 100svh;
@@ -303,10 +307,12 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
   color: var(--ink-soft);
 }
 /* привязан к правому краю, как портрет и Bloom — держится одинаково на всех экранах */
-.hero-badge--1 { right: 4%; top: 31%; }
-.hero-badge--2 { right: 5%; top: 12%; }
-.hero-badge--3 { right: 44%; top: 52%; }
-.hero-badge--4 { right: 36%; top: 70%; }
+/* левый фланг: правые кромки выровнены по левому краю портрета */
+.hero-badge--1 { right: calc(var(--ro) + var(--pw) * 0.78); top: 30%; }  /* MBA */
+.hero-badge--3 { right: calc(var(--ro) + var(--pw) * 0.78); top: 50%; }  /* KazTulip */
+/* правый фланг: выше и ниже лица */
+.hero-badge--2 { right: 4%; top: 12%; }  /* Bloom Kazakhstan */
+.hero-badge--4 { right: 4%; top: 62%; }  /* AI-технологии */
 
 .hero-social {
   position: absolute;
@@ -508,7 +514,7 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
 .fl-card:nth-child(5) { grid-column: span 3; aspect-ratio: 3 / 4.2; margin-top: 30px; }
 .fl-card:nth-child(6) { grid-column: span 4; aspect-ratio: 4 / 4.8; }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .fl-card:nth-child(n) { grid-column: span 6; margin-top: 0; aspect-ratio: 4 / 5; }
 }
 
@@ -908,7 +914,7 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
 }
 
 /* ─── Адаптив (первый проход; полный — Task 9) ─── */
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .hero-scene { grid-template-columns: 1fr; align-content: end; padding-top: 110px; }
   .bg-letter--hero { left: 50%; }
   .hero-portrait {
@@ -934,6 +940,16 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
   .hero-badge--2 { right: 8px; top: 17%; }
   .hero-badge--3 { left: 8px; right: auto; top: 28%; }
   .hero-badge--4 { right: 8px; top: 30%; }
+  /* планшет и узкое окно: блоки держатся у краёв центрированного портрета */
+  @media (min-width: 701px) {
+    .hero-badge { max-width: 210px; padding: 10px 16px; }
+    .hero-badge b { font-size: .86rem; }
+    .hero-badge span { font-size: .72rem; }
+    .hero-badge--1 { left: auto; right: calc(50% + min(54svh * 0.667, 92vw) * 0.40); top: 20%; }
+    .hero-badge--3 { left: auto; right: calc(50% + min(54svh * 0.667, 92vw) * 0.40); top: 32%; }
+    .hero-badge--2 { right: auto; left: calc(50% + min(54svh * 0.667, 92vw) * 0.40); top: 17%; }
+    .hero-badge--4 { right: auto; left: calc(50% + min(54svh * 0.667, 92vw) * 0.40); top: 34%; }
+  }
   .tl-item, .tl-item:nth-child(even) { grid-template-columns: 1fr; }
   .timeline::before { left: 8px; }
   .tl-item::before { left: 8px; }
