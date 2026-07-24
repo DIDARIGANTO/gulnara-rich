@@ -812,7 +812,7 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
     max-height: 54svh;
     order: 1;
   }
-  .hero-titles { order: 2; text-align: center; padding-bottom: 120px; }
+  .hero-titles { order: 2; text-align: center; padding-bottom: 210px; }
   .hero-tag { margin-inline: auto; }
   .hero-social {
     right: 50%;
