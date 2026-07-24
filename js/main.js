@@ -27,18 +27,4 @@
     document.addEventListener("ga:lang", () => requestAnimationFrame(tick));
     tick();
   }
-
-  /* Имя в hero: каждая буква плавает со своей фазой */
-  const splitName = () => {
-    if (reduced) return;
-    const el = document.querySelector(".hero-name");
-    if (!el || el.querySelector(".ltr")) return;
-    el.innerHTML = el.innerHTML.split(/<br\s*\/?>/i).map(line =>
-      [...line].map(ch => ch.trim()
-        ? `<span class="ltr" style="--d:${(Math.random() * 5).toFixed(2)}">${ch}</span>`
-        : ch).join("")
-    ).join("<br>");
-  };
-  document.addEventListener("ga:lang", splitName);
-  splitName();
 })();
