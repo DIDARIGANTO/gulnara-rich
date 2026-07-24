@@ -302,7 +302,7 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
   line-height: 1.35;
   color: var(--ink-soft);
 }
-.hero-badge--1 { right: 44%; top: 24%; }
+.hero-badge--1 { right: 53%; top: 31%; }
 .hero-badge--2 { right: 5%; top: 12%; }
 .hero-badge--3 { right: 44%; top: 52%; }
 .hero-badge--4 { right: 36%; top: 70%; }
