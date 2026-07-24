@@ -929,10 +929,10 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
   .hero-badge { max-width: 148px; padding: 8px 11px; }
   .hero-badge b { font-size: .74rem; }
   .hero-badge span { font-size: .64rem; }
-  .hero-badge--1 { left: 8px; right: auto; top: 17%; }
-  .hero-badge--2 { right: 8px; top: 22%; }
-  .hero-badge--3 { left: 8px; right: auto; top: 27%; }
-  .hero-badge--4 { right: 8px; top: 32%; }
+  .hero-badge--1 { left: 8px; right: auto; top: 22%; width: 148px; text-align: center; }
+  .hero-badge--2 { right: 8px; top: 17%; }
+  .hero-badge--3 { left: 8px; right: auto; top: 28%; }
+  .hero-badge--4 { right: 8px; top: 30%; }
   .tl-item, .tl-item:nth-child(even) { grid-template-columns: 1fr; }
   .timeline::before { left: 8px; }
   .tl-item::before { left: 8px; }
