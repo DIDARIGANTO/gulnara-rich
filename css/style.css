@@ -294,31 +294,6 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
 .hero-social-row a:hover { color: var(--gold-2); }
 .hero-social-row svg { color: var(--gold-2); }
 
-.scroll-hint {
-  position: absolute;
-  left: 50%; bottom: 22px;
-  transform: translateX(-50%);
-  z-index: 5;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  font-size: .7rem;
-  letter-spacing: .3em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-}
-.scroll-hint-line {
-  width: 1px; height: 44px;
-  background: linear-gradient(var(--gold), transparent);
-  animation: hintPulse 2.2s var(--ease) infinite;
-  transform-origin: top;
-}
-@keyframes hintPulse {
-  0% { transform: scaleY(0); opacity: 0; }
-  35% { transform: scaleY(1); opacity: 1; }
-  100% { transform: scaleY(1) translateY(18px); opacity: 0; }
-}
 
 /* ═══ Акт 2 · Манифест ═══ */
 .act--manifesto { padding: 0; }
@@ -804,7 +779,12 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
   transform: translateY(-5px);
   box-shadow: 0 20px 44px rgba(185, 138, 62, .16);
 }
-.press-card span { font-size: 1.7rem; display: block; margin-bottom: 10px; }
+.press-card span {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px;
+  color: var(--gold);
+}
 .press-card p { font-weight: 500; font-size: .92rem; line-height: 1.4; }
 
 /* ═══ Акт 9 · Финал ═══ */
@@ -919,6 +899,5 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
   html { scroll-behavior: auto; }
   .reveal { transition: none; }
   .book { animation: none; transform: rotateY(-20deg) rotateX(3deg); }
-  .scroll-hint-line { animation: none; }
   .manifesto-line .w { transition: none; }
 }
