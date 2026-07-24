@@ -10,6 +10,10 @@
   --ink-soft: #6B6058;
   --gold: #B98A3E;
   --gold-2: #D8B36A;
+  --berry: #8E3B52;   /* глубокий пион — фирменный акцент */
+  --berry-2: #C2607A; /* пудровый пион */
+  --sage: #8A9A7E;    /* шалфей — лист */
+  --sage-2: #A9B79B;
   --dark: #1E1917;
   --cream-card: #FFFDF8;
   --serif: "Cormorant Garamond", "Times New Roman", serif;
@@ -177,8 +181,17 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
   background: linear-gradient(135deg, var(--gold), var(--gold-2));
   color: var(--dark);
   box-shadow: 0 8px 26px rgba(185, 138, 62, .3);
+  animation: breathe 3.8s var(--ease) infinite; /* кнопка дышит */
 }
-.btn--gold:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(185, 138, 62, .42); }
+.btn--gold:hover {
+  animation-play-state: paused;
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px rgba(185, 138, 62, .42), 0 4px 18px rgba(142, 59, 82, .25);
+}
+@keyframes breathe {
+  0%, 100% { transform: scale(1); box-shadow: 0 8px 26px rgba(185, 138, 62, .3); }
+  50% { transform: scale(1.022); box-shadow: 0 12px 34px rgba(185, 138, 62, .44); }
+}
 .btn--big { padding: 18px 38px; font-size: 1rem; }
 
 .act-cta { text-align: center; margin-top: clamp(36px, 6vh, 64px); }
@@ -244,8 +257,18 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
   font-weight: 600;
   letter-spacing: .28em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--berry);
   margin-bottom: 22px;
+}
+
+/* Плавающие буквы имени */
+.hero-name .ltr {
+  display: inline-block;
+  animation: letterFloat 5.4s ease-in-out calc(var(--d, 0) * -1s) infinite alternate;
+}
+@keyframes letterFloat {
+  from { transform: translateY(0) rotate(0deg); }
+  to   { transform: translateY(-4px) rotate(.5deg); }
 }
 
 .hero-name {
@@ -310,7 +333,7 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
 }
 .scroll-hint-line {
   width: 1px; height: 44px;
-  background: linear-gradient(var(--gold), transparent);
+  background: linear-gradient(var(--gold), var(--berry-2), transparent);
   animation: hintPulse 2.2s var(--ease) infinite;
   transform-origin: top;
 }
@@ -345,7 +368,13 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
 }
 .manifesto-line .w { opacity: .1; transition: opacity .5s var(--ease); }
 .manifesto-line .w.lit { opacity: 1; }
-.manifesto-line em { font-style: italic; color: var(--gold); }
+.manifesto-line em {
+  font-style: italic;
+  background: linear-gradient(120deg, var(--berry), var(--berry-2) 55%, var(--gold-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 
 .manifesto-sign {
   font-size: .82rem;
@@ -385,9 +414,9 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
   left: 50%; top: 50%;
   width: 11px; height: 11px;
   transform: translate(-50%, -50%) rotate(45deg);
-  background: var(--gold-2);
+  background: var(--berry-2);
   border: 2px solid var(--bg);
-  box-shadow: 0 0 0 1px var(--gold);
+  box-shadow: 0 0 0 1px var(--berry);
 }
 
 .tl-item:nth-child(even) .tl-photo { order: 2; }
@@ -404,7 +433,15 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
   box-shadow: 0 26px 60px rgba(43, 37, 35, .16);
 }
 .tl-item:nth-child(even) .tl-photo { justify-self: start; }
-.tl-photo img { width: 100%; height: 100%; object-fit: cover; }
+.tl-photo { position: relative; }
+.tl-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transform: scale(1.12);
+  transition: transform 4.5s var(--ease); /* кен-бёрнс при появлении */
+}
+.tl-item.in-view .tl-photo img { transform: scale(1.02); }
+.tl-photo:hover img { transform: scale(1.09); transition-duration: .9s; }
 
 .tl-text h3 { font-size: clamp(1.7rem, 2.6vw, 2.4rem); margin-bottom: 12px; }
 .tl-text h3::before {
@@ -434,7 +471,7 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
   font-weight: 600;
   font-size: clamp(3rem, 7vw, 5.4rem);
   line-height: 1;
-  background: linear-gradient(135deg, var(--gold), var(--gold-2));
+  background: linear-gradient(135deg, var(--gold), var(--gold-2) 45%, var(--berry-2));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -476,7 +513,27 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
   box-shadow: 0 30px 60px rgba(185, 138, 62, .3);
   z-index: 2;
 }
-.fl-card img { width: 100%; height: 100%; object-fit: cover; }
+.fl-card img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 1.1s var(--ease);
+}
+.fl-card:hover img { transform: scale(1.07); }
+
+/* золотой блик, пробегающий по карточке */
+.fl-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 30%, rgba(255, 250, 235, .38) 50%, transparent 70%);
+  transform: translateX(-130%);
+  pointer-events: none;
+}
+.fl-card:hover::after { animation: shineSweep 1s var(--ease); }
+@keyframes shineSweep {
+  from { transform: translateX(-130%); }
+  to   { transform: translateX(130%); }
+}
 
 /* Ритм сетки: 2 ряда по 3 кадра с разными пропорциями */
 .fl-card:nth-child(1) { grid-column: span 4; aspect-ratio: 4 / 5; }
@@ -515,7 +572,7 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
   font-family: var(--serif);
   font-size: 2.4rem;
   font-weight: 600;
-  background: linear-gradient(135deg, var(--gold), var(--gold-2));
+  background: linear-gradient(135deg, var(--gold), var(--gold-2) 45%, var(--berry-2));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -728,13 +785,20 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
   transform: translateY(-5px);
   box-shadow: 0 20px 44px rgba(185, 138, 62, .16);
 }
-.press-card span { font-size: 1.7rem; display: block; margin-bottom: 10px; }
+.press-card span {
+  font-size: 1.7rem;
+  display: block;
+  margin-bottom: 10px;
+  transition: transform .45s var(--ease);
+}
+.press-card:hover span { transform: rotate(-8deg) scale(1.2) translateY(-3px); }
 .press-card p { font-weight: 500; font-size: .92rem; line-height: 1.4; }
 
 /* ═══ Акт 9 · Финал ═══ */
 .act--follow {
   background:
     radial-gradient(ellipse 70% 40% at 50% 0%, rgba(216, 179, 106, .12), transparent),
+    radial-gradient(ellipse 46% 30% at 82% 68%, rgba(142, 59, 82, .16), transparent),
     var(--dark);
   color: #F3EBDD;
   text-align: center;
@@ -820,10 +884,25 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
   .hero-tag { margin-inline: auto; }
   .hero-social {
     right: 50%;
-    transform: translateX(50%);
     bottom: 64px;
     white-space: nowrap;
   }
+  .hero-social[data-depth] {
+    transform: translateX(50%) translate3d(var(--px, 0px), var(--py, 0px), 0);
+    animation-name: heroSocialIn;
+  }
+}
+@keyframes heroSocialIn {
+  from {
+    opacity: 0;
+    transform: translateX(50%) translate3d(var(--px, 0px), calc(var(--py, 0px) + 46px), 0);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(50%) translate3d(var(--px, 0px), var(--py, 0px), 0);
+  }
+}
+@media (max-width: 900px) {
   .tl-item, .tl-item:nth-child(even) { grid-template-columns: 1fr; }
   .timeline::before { left: 8px; }
   .tl-item::before { left: 8px; }
@@ -837,6 +916,191 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
   .stats { grid-template-columns: 1fr; gap: 36px; }
 }
 
+/* ═══════════════════════════════════════════════
+   ЖИВОЙ СЛОЙ: фон, курсор, стеклянные цветы, bloom
+   ═══════════════════════════════════════════════ */
+
+/* Дышащий фон: дрейфующие цветные пятна */
+body::before, body::after {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  width: 58vmax; height: 58vmax;
+  border-radius: 50%;
+  pointer-events: none;
+}
+body::before {
+  top: -18vmax; right: -14vmax;
+  background: radial-gradient(circle, rgba(169, 183, 155, .16), transparent 62%);
+  animation: blobDrift 28s ease-in-out infinite alternate;
+}
+body::after {
+  bottom: -22vmax; left: -16vmax;
+  background: radial-gradient(circle, rgba(194, 96, 122, .11), transparent 62%);
+  animation: blobDrift 36s ease-in-out infinite alternate-reverse;
+}
+@keyframes blobDrift {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(-9vmax, 7vmax) scale(1.18); }
+}
+
+/* Буквы-подложки: плывут в глубине, вне фокуса (depth of field) */
+.bg-letter i {
+  display: inline-block;
+  font-style: normal;
+  filter: blur(3px);
+  animation: bgDrift 16s ease-in-out infinite alternate;
+}
+@keyframes bgDrift {
+  from { transform: translateY(0) scale(1); }
+  to   { transform: translateY(-18px) scale(1.02); }
+}
+
+/* Курсор-лепесток */
+.has-cursor, .has-cursor * { cursor: none !important; }
+#cursor {
+  position: fixed;
+  left: -16px; top: -16px;
+  width: 32px; height: 32px;
+  z-index: 300;
+  pointer-events: none;
+}
+#cursor svg {
+  display: block;
+  transition: transform .35s var(--ease);
+  filter: drop-shadow(0 2px 10px rgba(216, 179, 106, .55));
+}
+#cursor.is-hover svg { transform: scale(1.6) rotate(-16deg); }
+#cursor.is-down svg { transform: scale(.8); }
+
+/* ─── Стеклянный 3D-цветок ─── */
+@property --open {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: true;
+}
+.bloom {
+  position: absolute;
+  width: 170px;
+  aspect-ratio: 1;
+  transform-style: preserve-3d;
+  perspective: 700px;
+  z-index: 3;
+  transition: --open 1.1s var(--ease);
+  animation: bloomSway 9s ease-in-out infinite alternate;
+  pointer-events: auto;
+}
+.bloom:hover { --open: 1; } /* цветок раскрывается */
+@keyframes bloomSway {
+  from { rotate: -4deg; translate: 0 0; }
+  to   { rotate: 5deg; translate: 0 -10px; }
+}
+.bloom i {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 42%; height: 60%;
+  margin: -30% 0 0 -21%;
+  transform-origin: 50% 96%;
+  transform:
+    rotateZ(calc(var(--i) * 45deg))
+    rotateX(calc(62deg - var(--open) * 26deg));
+  border-radius: 50% 50% 50% 50% / 64% 64% 36% 36%;
+  background: linear-gradient(180deg,
+    rgba(255, 255, 255, .55),
+    rgba(216, 179, 106, .22) 45%,
+    rgba(194, 96, 122, .3));
+  border: 1px solid rgba(255, 255, 255, .6);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  box-shadow:
+    inset 0 1px 10px rgba(255, 255, 255, .4),
+    0 8px 22px rgba(142, 59, 82, .14);
+}
+.bloom b {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 17%; aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 30%, #F1DCA8, var(--gold-2) 55%, var(--gold));
+  box-shadow: 0 0 18px rgba(216, 179, 106, .8); /* bloom-свечение */
+  animation: corePulse 3.2s ease-in-out infinite;
+}
+@keyframes corePulse {
+  0%, 100% { box-shadow: 0 0 14px rgba(216, 179, 106, .65); }
+  50% { box-shadow: 0 0 30px rgba(216, 179, 106, .95); }
+}
+.bloom--hero { left: 41%; bottom: 9vh; width: 150px; }
+.bloom--flowers { right: clamp(6px, 6vw, 110px); top: 90px; width: 140px; }
+.bloom--dark { left: 50%; translate: -50%; bottom: -46px; width: 120px; opacity: .85; }
+
+/* Пульс кнопки play */
+.play-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(216, 179, 106, .8);
+  animation: playPulse 2.4s var(--ease) infinite;
+}
+@keyframes playPulse {
+  from { transform: scale(1); opacity: .9; }
+  to   { transform: scale(1.55); opacity: 0; }
+}
+
+/* Дыхание рамки QR */
+.qr-frame { animation: qrGlow 4.2s ease-in-out infinite; }
+@keyframes qrGlow {
+  0%, 100% { box-shadow: 0 30px 70px rgba(0, 0, 0, .45), 0 0 0 1px rgba(216, 179, 106, .35), 0 0 26px rgba(216, 179, 106, .12); }
+  50% { box-shadow: 0 30px 70px rgba(0, 0, 0, .45), 0 0 0 1px rgba(216, 179, 106, .55), 0 0 44px rgba(216, 179, 106, .3); }
+}
+
+/* Иконки соцсетей: взмах при наведении */
+.hero-social-row a:hover svg { animation: wiggle .55s var(--ease); }
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0); }
+  30% { transform: rotate(-12deg) scale(1.15); }
+  65% { transform: rotate(9deg); }
+}
+
+/* Наплыв камеры при загрузке hero */
+.hero-portrait {
+  animation: heroLayerIn 1.5s var(--ease) .15s both;
+}
+.hero-titles { animation: heroLayerIn 1.2s var(--ease) .5s both; }
+.hero-social { animation: heroLayerIn 1.1s var(--ease) .85s both; }
+@keyframes heroLayerIn {
+  from {
+    opacity: 0;
+    transform: translate3d(var(--px, 0px), calc(var(--py, 0px) + 46px), 0) scale(1.045);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(var(--px, 0px), var(--py, 0px), 0) scale(1);
+  }
+}
+.bg-letter--hero { animation: heroLetterIn 1.9s var(--ease) both; }
+@keyframes heroLetterIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) translate3d(var(--px, 0px), var(--py, 0px), 0) scale(1.14);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) translate3d(var(--px, 0px), var(--py, 0px), 0) scale(1);
+  }
+}
+
+/* Наведение резкости на заголовки (camera focus) */
+.act-head.reveal { filter: blur(7px); transition: opacity .9s var(--ease), transform .9s var(--ease), filter 1.1s var(--ease); }
+.act-head.reveal.in-view { filter: blur(0); }
+
+@media (max-width: 900px) {
+  .bloom { width: 110px; }
+  .bloom--hero { display: none; }
+  .bloom--flowers { top: 40px; }
+}
+
 /* ─── Reduced motion ─── */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -844,4 +1108,12 @@ h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
   .book { animation: none; transform: rotateY(-20deg) rotateX(3deg); }
   .scroll-hint-line { animation: none; }
   .manifesto-line .w { transition: none; }
+  body::before, body::after,
+  .bg-letter i, .bloom, .bloom b,
+  .btn--gold, .play-btn::after, .qr-frame,
+  .hero-portrait, .hero-titles, .hero-social, .bg-letter--hero,
+  .hero-name .ltr { animation: none; }
+  .act-head.reveal { filter: none; transition: none; }
+  .tl-photo img, .fl-card img, .press-card span { transition: none; transform: none; }
+  .tl-item.in-view .tl-photo img { transform: none; }
 }

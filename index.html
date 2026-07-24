@@ -34,7 +34,7 @@
   <!-- ═══ Акт 1 · Hero ═══ -->
   <section id="hero" class="act act--hero">
     <div class="hero-scene">
-      <span class="bg-letter bg-letter--hero" data-depth="0.05" aria-hidden="true">G</span>
+      <span class="bg-letter bg-letter--hero" data-depth="0.05" aria-hidden="true"><i>G</i></span>
       <div class="hero-glow" data-depth="0.1" aria-hidden="true"></div>
       <picture>
         <source srcset="assets/hero/gulnar-hero-cutout.webp" type="image/webp">
@@ -45,6 +45,11 @@
         <p class="hero-eyebrow" data-i18n="hero.eyebrow">self-made woman · наставник женщин в бизнесе</p>
         <h1 class="hero-name" data-i18n="hero.name">Гульнар<br>Хамитова</h1>
         <p class="hero-tag" data-i18n="hero.tag">20 лет в цветочном бизнесе. Строить дело и жить в согласии с собой.</p>
+      </div>
+      <div class="bloom bloom--hero" data-depth="0.24" aria-hidden="true">
+        <i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i>
+        <i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i>
+        <b></b>
       </div>
       <aside class="hero-social" data-depth="0.32">
         <p class="hero-social-title" data-i18n="hero.social">Будь в движении</p>
@@ -78,7 +83,7 @@
 
   <!-- ═══ Акт 3 · История ═══ -->
   <section id="story" class="act act--story">
-    <span class="bg-letter" aria-hidden="true">20</span>
+    <span class="bg-letter" aria-hidden="true"><i>20</i></span>
     <div class="act-head reveal">
       <p class="kicker" data-i18n="story.kicker">Путь</p>
       <h2 data-i18n="story.title">20 лет в цветах</h2>
@@ -123,11 +128,16 @@
 
   <!-- ═══ Акт 4 · Rich Flowers ═══ -->
   <section id="flowers" class="act act--flowers">
-    <span class="bg-letter" aria-hidden="true">RICH</span>
+    <span class="bg-letter" aria-hidden="true"><i>RICH</i></span>
     <div class="act-head reveal">
       <p class="kicker">Rich Flowers</p>
       <h2 data-i18n="flowers.title">Цветы со всего мира</h2>
       <p class="lead" data-i18n="flowers.text">Когда-то это был один магазин. Сегодня — сеть Rich Flowers: свежие поставки со всего мира, фирменные букеты и сервис, ради которого возвращаются.</p>
+    </div>
+    <div class="bloom bloom--flowers" aria-hidden="true">
+      <i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i>
+      <i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i>
+      <b></b>
     </div>
     <div class="fl-gallery" id="fl-gallery">
       <figure class="fl-card reveal" style="--i:0; --rot:-1.6deg"><img src="assets/photos/web/photo-06.jpg" alt="Гульнар с авторской цветочной композицией Rich Flowers" loading="lazy"></figure>
@@ -174,7 +184,7 @@
 
   <!-- ═══ Акт 6 · Голос ═══ -->
   <section id="voice" class="act act--voice">
-    <span class="bg-letter" aria-hidden="true" data-i18n="voice.bg">ГОЛОС</span>
+    <span class="bg-letter" aria-hidden="true"><i data-i18n="voice.bg">ГОЛОС</i></span>
     <div class="act-head reveal">
       <p class="kicker" data-i18n="voice.kicker">Голос</p>
       <h2 data-i18n="voice.title">Подкасты и интервью</h2>
@@ -241,6 +251,11 @@
       <p class="kicker kicker--gold reveal" data-i18n="follow.kicker">Будь рядом</p>
       <h2 class="reveal" data-i18n="follow.title">Продолжение — в Instagram</h2>
       <p class="follow-text reveal" data-i18n="follow.text">Философия self-made женщины, закулисье Rich Flowers и живой опыт — каждый день.</p>
+      <div class="bloom bloom--dark" aria-hidden="true">
+        <i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i>
+        <i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i>
+        <b></b>
+      </div>
       <div class="qr-frame reveal">
         <img src="assets/qr-instagram.svg" alt="QR: instagram.com/gulnara.rich" width="220" height="220">
         <i class="qr-corner qr-corner--tl"></i><i class="qr-corner qr-corner--tr"></i>
@@ -264,6 +279,7 @@
 <canvas id="petals" aria-hidden="true"></canvas>
 
 <script src="js/i18n.js"></script>
+<script src="js/cursor.js"></script>
 <script src="js/petals.js"></script>
 <script src="js/parallax.js"></script>
 <script src="js/video.js"></script>
